@@ -8,6 +8,8 @@ import "./AuthorsPage.css";
 
 const AuthorsPage = () => {
   const [authors, setAuthors] = useState([]);
+  const [subjects, setSubjects] = useState([]);
+  const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [editingAuthor, setEditingAuthor] = useState(null);
@@ -18,16 +20,28 @@ const AuthorsPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchAuthors = async () => {
+    const fetchData = async () => {
       try {
-        const response = await fetch(
-          `${process.env.REACT_APP_BASE_URL}/authors`
-        );
-        if (!response.ok) {
-          throw new Error("Failed to fetch authors");
+        const [authorsResponse, subjectsResponse, booksResponse] =
+          await Promise.all([
+            fetch(`${process.env.REACT_APP_BASE_URL}/authors`),
+            fetch(`${process.env.REACT_APP_BASE_URL}/subjects`),
+            fetch(`${process.env.REACT_APP_BASE_URL}/books`),
+          ]);
+
+        if (!authorsResponse.ok || !subjectsResponse.ok || !booksResponse.ok) {
+          throw new Error("Failed to fetch data");
         }
-        const data = await response.json();
-        setAuthors(data);
+
+        const [authorsData, subjectsData, booksData] = await Promise.all([
+          authorsResponse.json(),
+          subjectsResponse.json(),
+          booksResponse.json(),
+        ]);
+
+        setAuthors(authorsData);
+        setSubjects(subjectsData);
+        setBooks(booksData);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -35,14 +49,14 @@ const AuthorsPage = () => {
       }
     };
 
-    fetchAuthors();
+    fetchData();
   }, []);
 
   const handleEdit = (author) => {
     setEditingAuthor(author);
     setEditName(author.name);
-    setSelectedSubject(author.subject || "");
-    setSelectedBook(author.book || "");
+    setSelectedSubject(author.subject?._id || "");
+    setSelectedBook(author.books.length > 0 ? author.books[0]._id : ""); // Select first book if available
   };
 
   const handleDelete = (author) => {
@@ -76,10 +90,16 @@ const AuthorsPage = () => {
     setDeletingAuthor(null);
   };
 
-  const handleEditConfirm = async (updatedData) => {
+  const handleEditConfirm = async () => {
     if (!editingAuthor) return;
 
     try {
+      const updatedData = {
+        name: editName,
+        subjectId: selectedSubject,
+        bookIds: [selectedBook], // Assuming each author is linked to only one book
+      };
+
       const response = await fetch(
         `${process.env.REACT_APP_BASE_URL}/authors/${editingAuthor._id}`,
         {
@@ -131,8 +151,8 @@ const AuthorsPage = () => {
             <div key={author._id} className="author-card">
               <h2>{author.name}</h2>
               <div className="books-container">
-                {author.books ? (
-                  Object.values(author.books).map((book) => (
+                {author.books.length > 0 ? (
+                  author.books.map((book) => (
                     <div key={book._id} className="book-card">
                       <img
                         src={book.image?.url || "default-image-url"}
@@ -167,11 +187,15 @@ const AuthorsPage = () => {
       {editingAuthor && (
         <ModalEdit
           name={editName}
-          onChange={setEditName}
+          subjects={subjects}
+          books={books}
+          onChangeName={setEditName}
           onCancel={handleEditCancel}
           onConfirm={handleEditConfirm}
           setSelectedSubject={setSelectedSubject}
           setSelectedBook={setSelectedBook}
+          selectedSubject={selectedSubject}
+          selectedBook={selectedBook}
         />
       )}
       {deletingAuthor && (

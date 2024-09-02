@@ -13,19 +13,36 @@ exports.getAllAuthors = async (req, res) => {
 
 // Create a new author
 exports.createAuthor = async (req, res) => {
-  const author = new Author({
-    name: req.body.name,
-    subject: req.body.subjectId,
-    books: req.body.bookIds || [], // Ensure books array is set to empty if not provided
-  });
+  const { name, subjectId, bookIds } = req.body;
 
   try {
+    // Check if an author already exists for the given book(s)
+    const existingAuthors = await Author.find({
+      books: { $in: bookIds },
+    });
+
+    if (existingAuthors.length > 0) {
+      return res
+        .status(400)
+        .json({
+          message:
+            "An author already exists for one or more of the selected books.",
+        });
+    }
+
+    // Create a new author
+    const author = new Author({
+      name,
+      subject: subjectId,
+      books: bookIds || [], // Ensure books array is set to empty if not provided
+    });
+
     const newAuthor = await author.save();
 
     // Update the books to include the new author
-    if (req.body.bookIds && req.body.bookIds.length > 0) {
+    if (bookIds && bookIds.length > 0) {
       await Book.updateMany(
-        { _id: { $in: req.body.bookIds } },
+        { _id: { $in: bookIds } },
         { $addToSet: { authors: newAuthor._id } }
       );
     }

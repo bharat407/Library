@@ -3,19 +3,23 @@ import "./ModalEdit.css";
 
 const ModalEdit = ({
   name = "",
-  onChange,
+  subjects = [],
+  books = [],
+  onChangeName,
   onCancel,
   onConfirm,
   setSelectedSubject,
   setSelectedBook,
+  selectedSubject,
+  selectedBook,
 }) => {
-  const [subject, setSubject] = useState("");
-  const [book, setBook] = useState("");
+  const [subject, setSubject] = useState(selectedSubject || "");
+  const [book, setBook] = useState(selectedBook || "");
 
   useEffect(() => {
-    setSubject(""); // Reset subject when modal opens
-    setBook(""); // Reset book when modal opens
-  }, [name]);
+    setSubject(selectedSubject || ""); // Reset subject when modal opens
+    setBook(selectedBook || ""); // Reset book when modal opens
+  }, [selectedSubject, selectedBook]);
 
   const handleConfirm = () => {
     onConfirm({
@@ -27,51 +31,58 @@ const ModalEdit = ({
 
   return (
     <div className="modal-overlay">
-      <div className="modal-content">
-        <div className="modal-header">
-          <h2>Edit Author</h2>
-        </div>
+      <div className="modal-edit">
+        <h2>Edit Author</h2>
         <div className="modal-body">
-          <label htmlFor="authorName">Author Name:</label>
-          <input
-            type="text"
-            id="authorName"
-            value={name}
-            onChange={(e) => onChange(e.target.value)}
-            className="input-field"
-          />
-          <label htmlFor="subjectDropdown">Subject:</label>
-          <select
-            id="subjectDropdown"
-            value={subject}
-            onChange={(e) => {
-              setSubject(e.target.value);
-              setSelectedSubject(e.target.value); // Notify parent
-            }}
-            className="dropdown"
-          >
-            <option value="">Select a subject</option>
-            {/* Example subjects */}
-            <option value="subject1">Subject 1</option>
-            <option value="subject2">Subject 2</option>
-          </select>
-          <label htmlFor="bookDropdown">Book:</label>
-          <select
-            id="bookDropdown"
-            value={book}
-            onChange={(e) => {
-              setBook(e.target.value);
-              setSelectedBook(e.target.value); // Notify parent
-            }}
-            className="dropdown"
-          >
-            <option value="">Select a book</option>
-            {/* Example books */}
-            <option value="book1">Book 1</option>
-            <option value="book2">Book 2</option>
-          </select>
+          <div className="form-group">
+            <label>Author Name:</label>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => onChangeName(e.target.value)}
+              className="input-field"
+            />
+          </div>
+          <div className="form-group">
+            <label>Subject:</label>
+            <select
+              value={subject}
+              onChange={(e) => {
+                setSubject(e.target.value);
+                setSelectedSubject(e.target.value); // Notify parent
+              }}
+              className="dropdown"
+            >
+              <option value="">Select a subject</option>
+              {subjects.map((sub) => (
+                <option key={sub._id} value={sub._id}>
+                  {sub.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="form-group">
+            <label>Book:</label>
+            <select
+              value={book}
+              onChange={(e) => {
+                setBook(e.target.value);
+                setSelectedBook(e.target.value); // Notify parent
+              }}
+              className="dropdown"
+            >
+              <option value="">Select a book</option>
+              {books
+                .filter((b) => b.subject && b.subject._id === subject) // Filter books based on selected subject
+                .map((b) => (
+                  <option key={b._id} value={b._id}>
+                    {b.title}
+                  </option>
+                ))}
+            </select>
+          </div>
         </div>
-        <div className="modal-footer">
+        <div className="modal-actions">
           <button onClick={onCancel} className="cancel-button">
             Cancel
           </button>

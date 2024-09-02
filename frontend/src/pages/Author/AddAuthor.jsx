@@ -97,7 +97,9 @@ const AddAuthor = () => {
       );
 
       if (!response.ok) {
-        throw new Error("Failed to create author");
+        const data = await response.json();
+        toast.error(data.message || "Failed to create author");
+        return;
       }
 
       const newAuthor = await response.json();

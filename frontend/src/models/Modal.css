@@ -1,3 +1,4 @@
+/* Modal Overlay */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -10,26 +11,23 @@
   align-items: center;
 }
 
-.modal-content {
+/* Modal Content */
+.modal-edit {
   background: white;
   padding: 20px;
   border-radius: 8px;
   max-width: 400px;
   width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.modal-header h2 {
+/* Header */
+.modal-edit h2 {
   margin-bottom: 16px;
 }
 
-.input-field {
-  width: 100%;
-  padding: 8px;
-  margin: 8px 0;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-}
-
+/* Form Elements */
+.input-field,
 .dropdown {
   width: 100%;
   padding: 8px;
@@ -38,11 +36,19 @@
   border: 1px solid #ccc;
 }
 
-.modal-footer {
+/* Modal Body */
+.modal-body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Modal Actions (Footer) */
+.modal-actions {
   display: flex;
   justify-content: space-between;
 }
 
+/* Buttons */
 .cancel-button,
 .confirm-button {
   padding: 10px 15px;

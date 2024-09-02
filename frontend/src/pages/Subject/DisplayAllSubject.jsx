@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import ModalEdit from "../../models/ModalEdit";
+import ModalEditSubject from "../../models/ModalEditSubject"; // Correct import
 import ModalDelete from "../../models/ModalDelete";
 import Navbar from "../../components/common/Navbar";
 import { toast } from "react-hot-toast";
@@ -167,9 +167,9 @@ const DisplaySubject = () => {
         </div>
         {/* Edit Modal */}
         {isEditModalOpen && (
-          <ModalEdit
+          <ModalEditSubject
             name={newSubjectName}
-            onChange={setNewSubjectName}
+            onChange={setNewSubjectName} // Ensure onChange is passed correctly
             onCancel={closeEditModal}
             onConfirm={handleEditSubject}
           />

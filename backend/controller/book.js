@@ -1,10 +1,9 @@
 const Book = require("../models/books"); // Remove the duplicate import
 const cloudinary = require("../config/cloudinary"); // Ensure Cloudinary is configured correctly
 
-// Get all books with populated subject
 exports.getAllBooks = async (req, res) => {
   try {
-    const books = await Book.find().populate("subject");
+    const books = await Book.find().populate("subject").populate("authors");
     res.json(books);
   } catch (error) {
     res.status(500).json({ message: error.message });

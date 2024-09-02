@@ -44,36 +44,44 @@ const Cards = () => {
   return (
     <div className="cards-container">
       <div className="cards">
-        {data.subjects.map((subject) => (
-          <div key={subject._id} className="card">
-            <h3>{subject.name}</h3>
-            <div className="books">
-              {data.books
-                .filter((book) => book.subject._id === subject._id)
-                .map((book) => (
-                  <div  key={book._id} className="book-card">
-                    <h4>{book.title}</h4>
-                    {book.image && (
-                      <img
-                        src={book.image.url}
-                        alt={book.title}
-                        className="book-image"
-                      />
-                    )}
-                    <div className="authors">
-                      {data.authors
-                        .filter((author) => book.authors.includes(author._id))
-                        .map((author) => (
-                          <div key={author._id} className="author-card">
-                            <p>{author.name}</p>
-                          </div>
-                        ))}
-                    </div>
-                  </div>
-                ))}
+        {data.subjects.map((subject) =>
+          subject ? (
+            <div key={subject._id} className="card">
+              <h3>{subject.name}</h3>
+              <div className="books">
+                {data.books
+                  .filter(
+                    (book) => book.subject && book.subject._id === subject._id
+                  )
+                  .map((book) =>
+                    book ? (
+                      <div key={book._id} className="book-card">
+                        <h4>{book.title}</h4>
+                        {book.image && (
+                          <img
+                            src={book.image.url}
+                            alt={book.title}
+                            className="book-image"
+                          />
+                        )}
+                        <div className="authors">
+                          {book.authors && book.authors.length > 0 ? (
+                            book.authors.map((author) => (
+                              <div key={author._id} className="author-card">
+                                <p>{author.name}</p>
+                              </div>
+                            ))
+                          ) : (
+                            <p>No authors found</p>
+                          )}
+                        </div>
+                      </div>
+                    ) : null
+                  )}
+              </div>
             </div>
-          </div>
-        ))}
+          ) : null
+        )}
       </div>
     </div>
   );

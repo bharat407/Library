@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import ModalEdit from "../../models/ModalEdit";
+import ModalEdit from "../../models/ModalEditBook";
 import ModalDelete from "../../models/ModalDelete";
 import Navbar from "../../components/common/Navbar";
 import { toast } from "react-hot-toast";
@@ -16,7 +16,6 @@ const DisplayBooks = () => {
   const [newBookTitle, setNewBookTitle] = useState("");
 
   useEffect(() => {
-    // Replace the static data with a fetch request to your backend
     const fetchBooks = async () => {
       try {
         const response = await fetch(`${process.env.REACT_APP_BASE_URL}/books`);
@@ -121,15 +120,23 @@ const DisplayBooks = () => {
           {books.length > 0 ? (
             books.map((book) => (
               <div key={book._id} className="book-card">
-                <img
-                  src={book.image.url}
-                  alt={book.title}
-                  className="book-image"
-                />
+                {book.image && (
+                  <img
+                    src={book.image.url}
+                    alt={book.title}
+                    className="book-image"
+                  />
+                )}
                 <div className="book-details">
                   <div className="book-title">{book.title}</div>
                   <div className="book-subject">
-                    Subject: {book.subject.name}
+                    Subject: {book.subject ? book.subject.name : "Unknown"}
+                  </div>
+                  <div className="book-authors">
+                    Authors:{" "}
+                    {book.authors && book.authors.length > 0
+                      ? book.authors.map((author) => author.name).join(", ")
+                      : "Unknown"}
                   </div>
                   <div className="book-buttons">
                     <button onClick={() => openEditModal(book)}>Edit</button>
@@ -148,10 +155,11 @@ const DisplayBooks = () => {
         {/* Edit Modal */}
         {isEditModalOpen && (
           <ModalEdit
-            name={newBookTitle}
-            onChange={setNewBookTitle}
+            initialTitle={newBookTitle}
+            onChangeTitle={setNewBookTitle}
             onCancel={closeEditModal}
             onConfirm={handleEditBook}
+            subjects={books.map((book) => book.subject.name)} // You may need to adjust this line based on the actual subject data structure
           />
         )}
 
