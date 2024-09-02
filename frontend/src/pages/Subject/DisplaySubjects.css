@@ -1,90 +1,131 @@
-/* DisplaySubjects.css */
-
-.display-subjects-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-  font-family: Arial, sans-serif;
+/* General Styles */
+.page-container {
+  font-family: "Nunito", sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+  min-height: 100vh;
 }
 
-.heading {
-  font-size: 28px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: white;
+.content-container {
+  padding: 2rem;
 }
 
-.top-buttons {
-  display: flex;
-  justify-content: flex-start;
-  margin-bottom: 20px;
-}
-
-.top-button {
-  padding: 10px 20px;
-  margin-right: 10px;
-  background-color: #4caf50;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: bold;
-  transition: background-color 0.3s;
-}
-
-.top-button:hover {
-  background-color: #45a049;
-}
-
-.subjects-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.subject-item {
+.header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 10px 15px;
-  transition: background-color 0.3s;
+  margin-bottom: 2rem;
 }
 
-.subject-item:hover {
-  background-color: #f0f0f0;
-}
-
-.subject-name {
-  font-size: 18px;
+.page-heading {
+  font-size: 2rem;
   font-weight: bold;
-  color: #444;
 }
 
-.subject-actions {
-  display: flex;
-  gap: 10px;
+.add-button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  text-decoration: none;
 }
 
-.subject-actions button {
-  padding: 5px 10px;
-  border: none;
-  border-radius: 3px;
+
+.adds-button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  text-decoration: none;
+}
+
+.add-button:hover {
+  background-color: #0056b3;
+}
+
+.subjects-container {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.subjects-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.subjects-table .table-heading {
+  background-color: #f8f9fa;
+  padding: 0.75rem;
+  text-align: left;
+  font-weight: bold;
+}
+
+.subjects-table .subject-row {
+  border-bottom: 1px solid #ddd;
+}
+
+.subjects-table .subject-name {
   cursor: pointer;
-  transition: background-color 0.3s;
+  padding: 0.75rem;
+}
+
+.actions-container {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.edit-button,
+.delete-button {
+  background-color: #f8f9fa;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
 }
 
 .edit-button {
-  background-color: #4caf50;
-  color: white;
+  color: #007bff;
 }
 
 .delete-button {
-  background-color: #f44336;
-  color: white;
+  color: #dc3545;
 }
 
-.subject-actions button:hover {
-  opacity: 0.8;
+.edit-button:hover {
+  background-color: #e2e6ea;
+}
+
+.delete-button:hover {
+  background-color: #f5c6cb;
+}
+
+.no-subjects {
+  text-align: center;
+  color: #888;
+}
+
+/* Modal Styles */
+.modal-overlay-custom {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content-custom {
+  background-color: #fff;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  position: relative;
+}
+
+.modal-content-custom button.close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
 }

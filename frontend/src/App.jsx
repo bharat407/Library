@@ -10,6 +10,7 @@ import DisplayBooks from "./pages/Book/DisplayBooks";
 import AddBook from "./pages/Book/AddBook";
 import DisplayAuthor from "./pages/Author/DisplayAuthor";
 import AddAuthor from "./pages/Author/AddAuthor";
+import NotFound from "./Error/Error";
 import PrivateRoute from "./context/PrivateRoute";
 
 const App = () => {
@@ -47,6 +48,8 @@ const App = () => {
           path="/addauthors"
           element={<PrivateRoute element={<AddAuthor />} />}
         />
+
+        <Route component={NotFound} />
       </Routes>
     </div>
   );

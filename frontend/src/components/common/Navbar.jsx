@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import "./Navbar.css";
 
 const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -16,13 +17,22 @@ const Navbar = () => {
     navigate("/dashboard");
   };
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <nav className="navbar">
       <div className="navbar-container">
         <div className="navbar-logo" onClick={handleLogo}>
           Library Management
         </div>
-        <div className="navbar-links">
+        <div className="menu-toggle" onClick={toggleMenu}>
+          <span className="menu-icon"></span>
+          <span className="menu-icon"></span>
+          <span className="menu-icon"></span>
+        </div>
+        <div className={`navbar-links ${isMenuOpen ? "open" : ""}`}>
           <Link to="/dashboard" className="nav-link">
             Home
           </Link>

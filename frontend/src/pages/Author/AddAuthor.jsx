@@ -10,14 +10,13 @@ const AddAuthor = () => {
   const [bookId, setBookId] = useState("");
   const [subjects, setSubjects] = useState([]);
   const [books, setBooks] = useState([]);
-  const [filteredBooks, setFilteredBooks] = useState([]); // State for filtered books
+  const [filteredBooks, setFilteredBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch subjects to populate the dropdown
     const fetchSubjects = async () => {
       try {
         const response = await fetch(

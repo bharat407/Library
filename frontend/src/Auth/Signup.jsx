@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import "./Registration.css";
+import styles from "./Registration.module.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Registration = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [cnfPassword, setPassword] = useState(false);
+  const [cnfPassword, setCnfPassword] = useState(false);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
@@ -75,69 +75,81 @@ const Registration = () => {
   };
 
   return (
-    <div className="login-container">
-      <div className="heading">Registration Page</div>
-      <div className="form-container">
+    <div className={styles.section}>
+      <div className={styles.heading}>Registration Page</div>
+      <div className={styles.formContainer}>
         <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
+          <div className={styles.formGroup}>
+            <label htmlFor="email" className={styles.formLabel}>
+              Email
+            </label>
             <input
               type="email"
               id="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
+              className={styles.formInput}
               required
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <div className="password-input-container">
+          <div className={styles.formGroup}>
+            <label htmlFor="password" className={styles.formLabel}>
+              Password
+            </label>
+            <div className={styles.passwordInputContainer}>
               <input
                 type={showPassword ? "text" : "password"}
                 id="password"
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
+                className={styles.formInput}
                 required
               />
               <button
                 type="button"
-                className="password-toggle"
+                className={styles.passwordToggle}
                 onClick={() => setShowPassword(!showPassword)}
               >
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </button>
             </div>
           </div>
-          <div className="form-group">
-            <label htmlFor="password">Change Password</label>
-            <div className="password-input-container">
+          <div className={styles.formGroup}>
+            <label htmlFor="confirmPassword" className={styles.formLabel}>
+              Confirm Password
+            </label>
+            <div className={styles.passwordInputContainer}>
               <input
                 type={cnfPassword ? "text" : "password"}
-                id="password"
-                name="password"
-                value={formData.password}
+                id="confirmPassword"
+                name="confirmPassword"
+                value={formData.confirmPassword}
                 onChange={handleChange}
+                className={styles.formInput}
                 required
               />
               <button
                 type="button"
-                className="password-toggle"
-                onClick={() => setPassword(!cnfPassword)}
+                className={styles.passwordToggle}
+                onClick={() => setCnfPassword(!cnfPassword)}
               >
                 {cnfPassword ? <FaEyeSlash /> : <FaEye />}
               </button>
             </div>
           </div>
-          <div className="button-group">
-            <button type="submit" className="btn btn-primary">
+          <div className={styles.buttonContainer}>
+            <button
+              type="submit"
+              className={`${styles.button} ${styles.buttonPrimary}`}
+            >
               Register
             </button>
             <button
               type="button"
               onClick={handleLogin}
-              className="btn btn-secondary"
+              className={`${styles.button} ${styles.buttonSecondary}`}
             >
               Login
             </button>

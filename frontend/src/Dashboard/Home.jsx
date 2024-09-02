@@ -1,12 +1,12 @@
 import React from "react";
 import Navbar from "../components/common/Navbar";
 import Cards from "../components/core/Cards";
-
+import "./home.css"
 const Home = () => {
   return (
-    <div>
+    <div className="">
       <Navbar />
-      <div>
+      <div className="Section-cards">
         <Cards />
       </div>
     </div>

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import "./Login.css";
+import styles from "./Login.module.css";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -59,35 +59,41 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
-      <div className="heading">Login Page</div>
-      <div className="form-container">
+    <div className={styles.loginPageContainer}>
+      <div className={styles.loginHeading}>Login Page</div>
+      <div className={styles.loginFormContainer}>
         <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
+          <div className={styles.loginFormGroup}>
+            <label htmlFor="email" className={styles.loginLabel}>
+              Email
+            </label>
             <input
               type="email"
               id="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
+              className={styles.loginEmailInput}
               required
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <div className="password-input-container">
+          <div className={styles.loginFormGroup}>
+            <label htmlFor="password" className={styles.loginLabel}>
+              Password
+            </label>
+            <div className={styles.passwordInputContainer}>
               <input
                 type={showPassword ? "text" : "password"}
                 id="password"
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
+                className={styles.loginPasswordInput}
                 required
               />
               <button
                 type="button"
-                className="password-toggle"
+                className={styles.passwordToggleButton}
                 onClick={() => setShowPassword(!showPassword)}
               >
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
@@ -95,17 +101,20 @@ const Login = () => {
             </div>
           </div>
 
-          <a href="/reset-password" className="forgot-password">
+          <a href="/reset-password" className={styles.forgotPasswordLink}>
             Forgot your password?
           </a>
-          <div className="button-group">
-            <button type="submit" className="btn btn-primary">
+          <div className={styles.buttonGroup}>
+            <button
+              type="submit"
+              className={`${styles.loginButton} ${styles.loginButtonPrimary}`}
+            >
               LOG IN
             </button>
             <button
               type="button"
               onClick={handleRegister}
-              className="btn btn-secondary"
+              className={`${styles.loginButton} ${styles.loginButtonSecondary}`}
             >
               REGISTER
             </button>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import ModalEditSubject from "../../models/ModalEditSubject"; // Correct import
+import ModalEditSubject from "../../models/ModalEditSubject";
 import ModalDelete from "../../models/ModalDelete";
 import Navbar from "../../components/common/Navbar";
 import { toast } from "react-hot-toast";
@@ -123,53 +123,64 @@ const DisplaySubject = () => {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <div>
+    <div className="page-container">
       <Navbar />
-      <div className="display-subjects-container">
-        <h1 className="heading">Subjects List</h1>
-        <div className="top-buttons">
-          <Link to="/addsubject" className="top-button">
+      <div className="content-container">
+        <div className="header-container">
+          <h1 className="page-heading">Subjects List</h1>
+          <Link to="/addsubject" className="add-button">
             Add Subject
           </Link>
-          <Link to="/dashboard" className="top-button">
+          <Link to="/addsubject" className="adds-button">
             Dashboard
           </Link>
         </div>
-        <div className="subjects-list">
+        <div className="subjects-container">
           {subjects.length > 0 ? (
-            subjects.map((subject) => (
-              <div key={subject._id} className="subject-item">
-                <span
-                  className="subject-name"
-                  onClick={() => handleSubjectClick(subject._id)}
-                >
-                  {subject.name}
-                </span>
-                <div className="subject-actions">
-                  <button
-                    className="edit-button"
-                    onClick={() => openEditModal(subject)}
-                  >
-                    Edit
-                  </button>
-                  <button
-                    className="delete-button"
-                    onClick={() => openDeleteModal(subject)}
-                  >
-                    Delete
-                  </button>
-                </div>
-              </div>
-            ))
+            <table className="subjects-table">
+              <thead>
+                <tr>
+                  <th className="table-heading">Subject Name</th>
+                  <th className="table-heading">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {subjects.map((subject) => (
+                  <tr key={subject._id} className="subject-row">
+                    <td
+                      className="subject-name"
+                      onClick={() => handleSubjectClick(subject._id)}
+                    >
+                      {subject.name}
+                    </td>
+                    <td className="actions-container">
+                      <button
+                        className="edit-button"
+                        onClick={() => openEditModal(subject)}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        className="delete-button"
+                        onClick={() => openDeleteModal(subject)}
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           ) : (
-            <div>No subjects found</div>
+            <div className="no-subjects">No subjects found</div>
           )}
         </div>
+
         {/* Edit Modal */}
         {isEditModalOpen && (
           <ModalEditSubject
             name={newSubjectName}
-            onChange={setNewSubjectName} // Ensure onChange is passed correctly
+            onChange={setNewSubjectName}
             onCancel={closeEditModal}
             onConfirm={handleEditSubject}
           />
@@ -177,11 +188,13 @@ const DisplaySubject = () => {
 
         {/* Delete Modal */}
         {isDeleteModalOpen && (
-          <ModalDelete
-            name={selectedSubject?.name}
-            onCancel={closeDeleteModal}
-            onConfirm={handleDeleteSubject}
-          />
+          <div className="modal-overlay" onClick={closeDeleteModal}>
+            <ModalDelete
+              name={selectedSubject?.name}
+              onCancel={closeDeleteModal}
+              onConfirm={handleDeleteSubject}
+            />
+          </div>
         )}
       </div>
     </div>
