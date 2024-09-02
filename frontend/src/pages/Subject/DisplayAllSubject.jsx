@@ -4,6 +4,8 @@ import ModalEditSubject from "../../models/ModalEditSubject";
 import ModalDelete from "../../models/ModalDelete";
 import Navbar from "../../components/common/Navbar";
 import { toast } from "react-hot-toast";
+import Spinner from "../../Error/spinner";
+import Error from "../../Error/Error";
 import "./DisplaySubjects.css";
 
 const DisplaySubject = () => {
@@ -119,60 +121,76 @@ const DisplaySubject = () => {
     }
   };
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
+  if (loading)
+    return (
+      <div>
+        <Spinner />
+      </div>
+    );
+  if (error)
+    return (
+      <div>
+        <Error /> {error}
+      </div>
+    );
 
   return (
-    <div className="page-container">
+    <div className="subjects-page-container">
       <Navbar />
-      <div className="content-container">
-        <div className="header-container">
-          <h1 className="page-heading">Subjects List</h1>
-          <Link to="/addsubject" className="add-button">
-            Add Subject
-          </Link>
-          <Link to="/addsubject" className="adds-button">
-            Dashboard
-          </Link>
+      <div className="subjects-content-container">
+        <div className="subjects-header-container">
+          <h1 className="subjects-header-title">Subjects List</h1>
+          <div className="subjects-header-buttons">
+            <Link to="/addsubject" className="subjects-add-button">
+              Add Subject
+            </Link>
+            <Link to="/dashboard" className="subjects-dashboard-button">
+              Dashboard
+            </Link>
+          </div>
         </div>
-        <div className="subjects-container">
+        <div className="subjects-container-custom">
           {subjects.length > 0 ? (
-            <table className="subjects-table">
+            <table className="subjects-table-custom">
               <thead>
                 <tr>
-                  <th className="table-heading">Subject Name</th>
-                  <th className="table-heading">Actions</th>
+                  <th className="subjects-table-heading">Subject Name</th>
+                  <th className="subjects-table-heading subjects-actions-cell">
+                    Actions
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 {subjects.map((subject) => (
-                  <tr key={subject._id} className="subject-row">
+                  <tr key={subject._id} className="subjects-row-custom">
                     <td
-                      className="subject-name"
+                      className="subjects-name-cell"
                       onClick={() => handleSubjectClick(subject._id)}
                     >
                       {subject.name}
                     </td>
-                    <td className="actions-container">
-                      <button
-                        className="edit-button"
-                        onClick={() => openEditModal(subject)}
-                      >
-                        Edit
-                      </button>
-                      <button
-                        className="delete-button"
-                        onClick={() => openDeleteModal(subject)}
-                      >
-                        Delete
-                      </button>
+                    <td className="subjects-actions-cell">
+                      <div className="subjects-actions-container">
+                        <button
+                          className="subjects-edit-button"
+                          onClick={() => openEditModal(subject)}
+                        >
+                          Edit
+                        </button>
+                        <button
+                          className="subjects-delete-button"
+                          onClick={() => openDeleteModal(subject)}
+                        >
+                          Delete
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 ))}
               </tbody>
             </table>
           ) : (
-            <div className="no-subjects">No subjects found</div>
+            <div className="subjects-no-data">No subjects found</div>
           )}
         </div>
 
@@ -188,7 +206,7 @@ const DisplaySubject = () => {
 
         {/* Delete Modal */}
         {isDeleteModalOpen && (
-          <div className="modal-overlay" onClick={closeDeleteModal}>
+          <div className="subjects-modal-overlay" onClick={closeDeleteModal}>
             <ModalDelete
               name={selectedSubject?.name}
               onCancel={closeDeleteModal}

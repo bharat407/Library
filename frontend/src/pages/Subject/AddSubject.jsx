@@ -49,30 +49,38 @@ const AddSubject = () => {
   return (
     <>
       <Navbar />
-      <div className="add-subject-container">
-        <div className="heading">Add a New Subject</div>
-        <form onSubmit={handleSubmit} className="add-subject-form">
-          <div className="form-group">
-            <label htmlFor="subjectName">Subject Name:</label>
+      <div className="new-subject-container">
+        <h2 className="new-subject-heading">Add a New Subject</h2>
+        <form onSubmit={handleSubmit} className="new-subject-form">
+          <div className="new-subject-form-group">
+            <label htmlFor="subjectName" className="new-subject-label">
+              Subject Name:
+            </label>
             <input
               type="text"
               id="subjectName"
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
+              className="new-subject-input"
             />
           </div>
-          <div className="button-container">
-            <button type="submit" className="button" disabled={loading}>
+          <div className="new-subject-button-container">
+            <button
+              type="submit"
+              className="new-subject-button"
+              disabled={loading}
+            >
               {loading ? "Adding..." : "Add Subject"}
             </button>
-            <Link to="/displaysubject" className="button">
+            <Link to="/displaysubject" className="new-subject-link-button">
               List Subjects
             </Link>
           </div>
-
-          {error && <div className="error-message">{error}</div>}
-          {success && <div className="success-message">{success}</div>}
+          {error && <div className="new-subject-error-message">{error}</div>}
+          {success && (
+            <div className="new-subject-success-message">{success}</div>
+          )}
         </form>
       </div>
     </>
