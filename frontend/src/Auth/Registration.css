@@ -1,17 +1,17 @@
-.resetContainer {
+/* General Container and Heading */
+.registrationSection {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: #1e2329;
+  background-color: rgba(168, 179, 237, 0.313);
   font-family: "Nunito", sans-serif;
 }
 
-.heading {
-  font-family: "Nunito", sans-serif;
+.registrationHeading {
   font-size: 1.75rem;
-  color: #ffffff;
+  color: black;
   margin-bottom: 1.5rem;
   text-align: center;
   letter-spacing: 1px;
@@ -21,46 +21,49 @@
   border-radius: 8px;
 }
 
-.formResetContainer {
-  background-color: #282c34;
-  padding: 2rem;
+/* Form Container */
+.registrationFormContainer {
+  background-color: white;
+  padding: 2.5rem;
   border-radius: 8px;
-  width: 300px;
+  width: 400px;
 }
 
-.formGroup {
+.registrationFormGroup {
   margin-bottom: 1rem;
 }
 
-label {
+.registrationFormLabel {
   display: block;
-  color: #d1d5db;
+  color: black;
   margin-bottom: 0.5rem;
   font-size: 0.875rem;
   font-weight: 500;
 }
 
-.formInput {
+/* Input Fields */
+.registrationFormInput {
   width: 100%;
   padding: 0.9rem;
   border: 1px solid #6b7280;
-  background-color: #2d3748;
-  color: #cbd5e1;
+  background-color: white;
+  color: black;
   border-radius: 0.375rem;
   font-size: 1rem;
   outline: none;
 }
 
-.formInput:focus {
-  border-color: #a0aec0;
+.registrationFormInput:focus {
+  border-color: black;
   box-shadow: 0 0 0 3px rgba(104, 122, 146, 0.5);
 }
 
-.passwordInputContainer {
+/* Password Input and Toggle */
+.registrationPasswordInputContainer {
   position: relative;
 }
 
-.passwordToggle {
+.registrationPasswordToggle {
   position: absolute;
   right: 0.75rem;
   top: 50%;
@@ -68,7 +71,7 @@ label {
   background: transparent;
   border: none;
   cursor: pointer;
-  /* color: #cbd5e1; */
+  color: black;
   font-size: 1.25rem;
   display: flex;
   align-items: center;
@@ -78,33 +81,14 @@ label {
   height: 1.5rem;
 }
 
-.login {
+/* Button Container and Styles */
+.registrationButtonContainer {
   display: flex;
-  align-items: center;
-  color: #cbd5e1;
-  text-decoration: underline;
-  font-size: 1.1rem;
-  margin-left: -1vh;
-  margin-bottom: 0.7rem;
-  margin-top: 1.2rem;
-  transition: color 0.15s ease-in-out;
-}
-
-.login:hover {
-  color: #a0aec0;
-}
-
-.loginText {
-  margin-left: 1vh;
-}
-
-.buttonContainer {
-  display: flex;
-  justify-content: center;
+  justify-content: space-between;
   margin-top: 1rem;
 }
 
-.button {
+.registrationButton {
   padding: 0.9rem 2.5rem;
   border: none;
   border-radius: 0.375rem;
@@ -115,11 +99,20 @@ label {
   transition: background-color 0.15s ease-in-out;
 }
 
-.buttonPrimary {
+.registrationButtonPrimary {
   background-color: #2563eb;
   color: white;
 }
 
-.buttonPrimary:hover {
+.registrationButtonPrimary:hover {
   background-color: #2b6cb0;
+}
+
+.registrationButtonSecondary {
+  background-color: #2ecc71;
+  color: white;
+}
+
+.registrationButtonSecondary:hover {
+  background-color: #27ae60;
 }

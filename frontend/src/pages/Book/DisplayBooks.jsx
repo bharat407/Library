@@ -5,6 +5,8 @@ import ModalDelete from "../../models/ModalDelete";
 import Navbar from "../../components/common/Navbar";
 import { toast } from "react-hot-toast";
 import "./DisplayBooks.css";
+import Spinner from "../../Error/spinner";
+import Error from "../../Error/Error";
 
 const DisplayBooks = () => {
   const [books, setBooks] = useState([]);
@@ -102,35 +104,52 @@ const DisplayBooks = () => {
     setIsDeleteModalOpen(false);
   };
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
+  if (loading)
+    return (
+      <div>
+        <Spinner />
+      </div>
+    );
+  if (error)
+    return (
+      <div>
+        <Error /> {error}
+      </div>
+    );
 
   return (
     <div>
       <Navbar />
       <div className="display-books-container">
-        <div className="heading">Books List</div>
-        <Link to="/addbook" className="add-book-button">
-          Add Book
-        </Link>
-        <Link to="/dashboard" className="add-book-button">
-          Dashboard
-        </Link>
+        <div className="books-header-container">
+          <h1 className="books-header-title">Books List</h1>
+          <div className="books-header-buttons">
+            <Link to="/addbook" className="books-add-button">
+              Add Book
+            </Link>
+            <Link to="/dashboard" className="books-dashboard-button">
+              Dashboard
+            </Link>
+          </div>
+        </div>
         <div className="books-list">
           {books.length > 0 ? (
             books.map((book) => (
-              <div key={book._id} className="book-card">
+              <div key={book._id} className="book-cards">
                 {book.image && (
                   <img
                     src={book.image.url}
                     alt={book.title}
-                    className="book-image"
+                    className="Display-book-image"
                   />
                 )}
                 <div className="book-details">
-                  <div className="book-title">{book.title}</div>
+                  <div className="book-titles">{book.title}</div>
                   <div className="book-subject">
-                    Subject: {book.subject ? book.subject.name : "Unknown"}
+                    Subject:{" "}
+                    {book.subject && book.subject.name
+                      ? book.subject.name
+                      : "Unknown"}
                   </div>
                   <div className="book-authors">
                     Authors:{" "}
@@ -159,7 +178,7 @@ const DisplayBooks = () => {
             onChangeTitle={setNewBookTitle}
             onCancel={closeEditModal}
             onConfirm={handleEditBook}
-            subjects={books.map((book) => book.subject.name)} // You may need to adjust this line based on the actual subject data structure
+            subjects={books.map((book) => book.subject?.name)} // Ensure subject names are defined
           />
         )}
 

@@ -1,0 +1,92 @@
+.addAuthorContainer {
+  max-width: 600px;
+  margin: 0 auto;
+  margin-top: 5vh;
+  padding: 30px 30px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  color: black;
+}
+
+.addAuthorContainer:hover {
+  /* transform: scale(1.02);/ */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+}
+
+.heading {
+  font-size: 1.5rem;
+  color: black;
+  font-weight: bold;
+  margin-bottom: 2vh;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.addAuthorForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.formGroup label {
+  font-size: 1.2rem;
+  color: black;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.formGroup input,
+.formGroup select {
+  padding: 15px;
+  font-size: 1.1rem;
+  border: 1px solid #3a3f54;
+  border-radius: 10px;
+  background-color: white;
+  color: black;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.formGroup input:focus,
+.formGroup select:focus {
+  border-color: #64dfdf;
+  box-shadow: 0 0 10px rgba(100, 223, 223, 0.7);
+  outline: none;
+}
+
+.formGroup select {
+  appearance: none;
+  color: #000;
+  background-image: url("https://res.cloudinary.com/dtobxhswg/image/upload/v1725351804/black-and-white-dropdown-list-rectangle-symbol-removebg-preview_p8yo03.png");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 28px 28px;
+}
+
+.submitButton {
+  padding: 15px;
+  font-size: 1.2rem;
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.submitButton:hover {
+  background-color: #5da9e7;
+  transform: translateY(-3px);
+}
+
+.submitButton:active {
+  transform: translateY(1px);
+}

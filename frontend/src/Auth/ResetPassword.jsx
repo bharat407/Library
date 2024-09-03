@@ -2,7 +2,7 @@ import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { FaArrowLeft, FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import styles from "./Reset.module.css";
+import "./Reset.css";
 
 const ResetPassword = () => {
   const navigate = useNavigate();
@@ -59,74 +59,80 @@ const ResetPassword = () => {
   };
 
   return (
-    <div className={styles.resetContainer}>
-      <div className={styles.heading}>Reset Password</div>
-      <div className={styles.formResetContainer}>
+    <div className="resetPasswordContainer">
+      <div className="resetPasswordHeading">Reset Password</div>
+      <div className="resetPasswordFormContainer">
         <form onSubmit={handleSubmit}>
-          <div className={styles.formGroup}>
-            <label htmlFor="email">Email</label>
+          <div className="resetPasswordFormGroup">
+            <label htmlFor="email" className="resetPasswordLabel">
+              Email
+            </label>
             <input
               type="email"
               id="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className={styles.formInput}
+              className="resetPasswordInput"
               required
             />
           </div>
-          <div className={styles.formGroup}>
-            <label htmlFor="password">New Password</label>
-            <div className={styles.passwordInputContainer}>
+          <div className="resetPasswordFormGroup">
+            <label htmlFor="password" className="resetPasswordLabel">
+              New Password
+            </label>
+            <div className="resetPasswordInputContainer">
               <input
                 type={showPassword ? "text" : "password"}
                 id="password"
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                className={styles.formInput}
+                className="resetPasswordInput"
                 required
               />
               <button
                 type="button"
-                className={styles.passwordToggle}
+                className="resetPasswordToggle"
                 onClick={() => setShowPassword(!showPassword)}
               >
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </button>
             </div>
           </div>
-          <div className={styles.formGroup}>
-            <label htmlFor="confirmPassword">Confirm Password</label>
-            <div className={styles.passwordInputContainer}>
+          <div className="resetPasswordFormGroup">
+            <label htmlFor="confirmPassword" className="resetPasswordLabel">
+              Confirm Password
+            </label>
+            <div className="resetPasswordInputContainer">
               <input
                 type={cnfPassword ? "text" : "password"}
                 id="confirmPassword"
                 name="confirmPassword"
                 value={formData.confirmPassword}
                 onChange={handleChange}
-                className={styles.formInput}
+                className="resetPasswordInput"
                 required
               />
               <button
                 type="button"
-                className={styles.passwordToggle}
+                className="resetPasswordToggle"
                 onClick={() => setCnfPassword(!cnfPassword)}
               >
                 {cnfPassword ? <FaEyeSlash /> : <FaEye />}
               </button>
             </div>
           </div>
-          <a href="/" className={styles.login}>
+          <a href="/" className="resetPasswordLogin">
             <span>
               <FaArrowLeft size={15} />
             </span>{" "}
-            <span className={styles.loginText}>Login</span>
+            <span className="resetPasswordLoginText">Login</span>
           </a>
-          <div className={styles.buttonContainer}>
+          <div className="resetPasswordButtonContainer">
             <button
               type="submit"
-              className={`${styles.button} ${styles.buttonPrimary}`}
+              className="resetPasswordButton resetPasswordButtonPrimary"
             >
               Reset Password
             </button>

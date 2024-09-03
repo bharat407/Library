@@ -69,7 +69,7 @@ const Cards = () => {
                   .map((book) =>
                     book ? (
                       <div key={book._id} className="book-card-item">
-                        <h4 className="books-title">{book.title}</h4>
+                        <h4 className="books-titles">{book.title}</h4>
                         {book.image && (
                           <img
                             src={book.image.url}
@@ -84,7 +84,7 @@ const Cards = () => {
                                 key={author._id}
                                 className="author-card-item"
                               >
-                                <p className="author-name">
+                                <p className="author-names">
                                   Author {author.name}
                                 </p>
                               </div>

@@ -1,21 +1,22 @@
+/* Light Theme Styles */
 .new-subject-container {
   padding: 30px;
   max-width: 600px;
   margin: 0 auto; /* Center the container horizontally */
-  background-color: #121c31;
+  background-color: whitesmoke; /* Light background color */
   margin-top: 15vh;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  color: #e2e8f0;
+  box-shadow: 2px 4px 4px 8px rgba(0, 0, 0, 0.1);
+  color: #333; /* Darker text color for better readability */
 }
 
 .new-subject-heading {
   font-size: 2rem;
-  color: #f8fafc;
+  color: #333; /* Darker text color */
   text-align: center;
   margin-bottom: 2rem;
   font-weight: bold;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Subtle shadow for a softer look */
 }
 
 .new-subject-form {
@@ -28,15 +29,13 @@
   display: flex;
   align-items: center; /* Align label and input on the same line */
   width: 100%; /* Full width */
-  /* max-width: 500px;  */
-  width: 95%;
   margin-bottom: 20px;
 }
 
 .new-subject-label {
   width: 30%; /* Set a fixed width for the label */
-  font-size: 1.5rem;
-  color: #cbd5e0;
+  font-size: 1.2rem; /* Slightly smaller font size */
+  color: #555; /* Slightly lighter text color */
   margin-right: 10px; /* Space between label and input */
   text-align: right; /* Align label text to the right */
 }
@@ -44,16 +43,16 @@
 .new-subject-input {
   width: 70%; /* Set the input width to fill the remaining space */
   padding: 12px;
-  border: 1px solid #4a5568;
+  border: 1px solid #ccc; /* Lighter border color */
   border-radius: 8px;
-  background-color: #2d3748;
-  color: #f8fafc;
+  background-color: #ffffff;
+  color: #333; /* Darker text color */
   font-size: 1rem;
   transition: border-color 0.3s;
 }
 
 .new-subject-input:focus {
-  border-color: #3b82f6;
+  border-color: #3b82f6; /* Consistent border color on focus */
   outline: none;
 }
 
@@ -76,22 +75,22 @@
 }
 
 .new-subject-button {
-  background-color: #10b981;
+  background-color: #4caf50; /* Lighter green for a light theme */
   color: #ffffff;
 }
 
 .new-subject-button:hover {
-  background-color: #059669;
+  background-color: #388e3c; /* Darker green on hover */
 }
 
 .new-subject-link-button {
-  background-color: #3b82f6;
+  background-color: #2196f3; /* Lighter blue for a light theme */
   color: #ffffff;
   text-decoration: none;
 }
 
 .new-subject-link-button:hover {
-  background-color: #2563eb;
+  background-color: #1976d2; /* Darker blue on hover */
 }
 
 .new-subject-error-message,
@@ -104,11 +103,53 @@
 }
 
 .new-subject-error-message {
-  background-color: #ef4444;
+  background-color: #f44336; /* Error message background */
   color: #ffffff;
 }
 
 .new-subject-success-message {
-  background-color: #10b981;
+  background-color: #4caf50; /* Success message background */
   color: #ffffff;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .new-subject-container {
+    padding: 15px; /* Reduced padding for smaller screens */
+    margin-top: 10vh; /* Adjust margin for smaller screens */
+  }
+
+  .new-subject-heading {
+    font-size: 1.5rem; /* Adjust font size for smaller screens */
+    margin-bottom: 1.5rem; /* Adjust margin for smaller screens */
+  }
+
+  .new-subject-form-group {
+    flex-direction: column; /* Stack label and input on smaller screens */
+    align-items: flex-start;
+  }
+
+  .new-subject-label {
+    width: 100%; /* Full width for labels on small screens */
+    text-align: left; /* Align label text to the left */
+    margin-bottom: 5px; /* Space below label */
+  }
+
+  .new-subject-input {
+    width: 90%; /* Full width for inputs on small screens */
+  }
+
+  .new-subject-button-container {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    /* align-items: center; */
+    width: 100%; /* Full width for button container */
+  }
+
+  .new-subject-button,
+  .new-subject-link-button {
+    /* width: 100%; Full width buttons on small screens */
+    margin-bottom: 10px; /* Space between buttons */
+    text-align: center;
+  }
 }

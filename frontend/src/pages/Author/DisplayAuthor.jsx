@@ -4,6 +4,8 @@ import { toast } from "react-hot-toast";
 import Navbar from "../../components/common/Navbar";
 import ModalEdit from "../../models/Edit";
 import ModalDelete from "../../models/ModalDelete";
+import Spinner from "../../Error/spinner";
+import Error from "../../Error/Error";
 import "./AuthorsPage.css";
 
 const AuthorsPage = () => {
@@ -132,57 +134,73 @@ const AuthorsPage = () => {
     setEditingAuthor(null);
   };
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
+  if (loading)
+    return (
+      <div>
+        <Spinner />
+      </div>
+    );
+  if (error)
+    return (
+      <div>
+        <Error /> {error}
+      </div>
+    );
 
   return (
     <div>
       <Navbar />
       <div className="authors-container">
-        <h1>Authors</h1>
-        <button
-          onClick={() => navigate("/addauthors")}
-          className="add-author-button"
-        >
-          Add Author
-        </button>
-        {authors.length > 0 ? (
-          authors.map((author) => (
-            <div key={author._id} className="author-card">
-              <h2>{author.name}</h2>
-              <div className="books-container">
-                {author.books.length > 0 ? (
-                  author.books.map((book) => (
-                    <div key={book._id} className="book-card">
-                      <img
-                        src={book.image?.url || "default-image-url"}
-                        alt={book.title}
-                        className="book-image"
-                      />
-                      <p>{book.title}</p>
-                    </div>
-                  ))
-                ) : (
-                  <p>No books available</p>
-                )}
+        <div className="authors-header-container">
+          <h1 className="page-title">Authors</h1>
+          <button
+            onClick={() => navigate("/addauthors")}
+            className="add-author-button"
+          >
+            Add Author
+          </button>
+        </div>
+        <div className="author-list">
+          {authors.length > 0 ? (
+            authors.map((author) => (
+              <div key={author._id} className="author-card">
+                <div className="books-container">
+                  {author.books.length > 0 ? (
+                    author.books.map((book) => (
+                      <div key={book._id} className="books-card">
+                        <img
+                          src={book.image?.url || "default-image-url"}
+                          alt={book.title}
+                          className="book-image"
+                        />
+                        <p className="book-title">{book.title}</p>
+                        <p className="books-title">Author {author.name}</p>
+                      </div>
+                    ))
+                  ) : (
+                    <p className="no-books-message">No books available</p>
+                  )}
+                </div>
+                <div className="button-container">
+                  <button
+                    onClick={() => handleEdit(author)}
+                    className="edit-button"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    onClick={() => handleDelete(author)}
+                    className="delete-button"
+                  >
+                    Delete
+                  </button>
+                </div>
               </div>
-              <button
-                onClick={() => handleEdit(author)}
-                className="edit-button"
-              >
-                Edit
-              </button>
-              <button
-                onClick={() => handleDelete(author)}
-                className="delete-button"
-              >
-                Delete
-              </button>
-            </div>
-          ))
-        ) : (
-          <p>No authors available</p>
-        )}
+            ))
+          ) : (
+            <p className="no-authors-message">No authors available</p>
+          )}
+        </div>
       </div>
       {editingAuthor && (
         <ModalEdit

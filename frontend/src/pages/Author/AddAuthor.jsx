@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import Navbar from "../../components/common/Navbar";
-import styles from "./AddAuthor.module.css";
+import  "./AddAuthor.css";
+import Spinner from "../../Error/spinner";
+import Error from "../../Error/Error";
 
 const AddAuthor = () => {
   const [authorName, setAuthorName] = useState("");
@@ -109,16 +111,26 @@ const AddAuthor = () => {
     }
   };
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
+  if (loading)
+    return (
+      <div>
+        <Spinner />
+      </div>
+    );
+  if (error)
+    return (
+      <div>
+        <Error /> {error}
+      </div>
+    );
 
   return (
     <div>
       <Navbar />
-      <div className={styles.addAuthorContainer}>
-        <div className={styles.heading}>Add New Author</div>
-        <form onSubmit={handleSubmit} className={styles.addAuthorForm}>
-          <div className={styles.formGroup}>
+      <div className="addAuthorContainer">
+        <div className="heading">Add New Author</div>
+        <form onSubmit={handleSubmit} className="addAuthorForm">
+          <div className="formGroup">
             <label htmlFor="authorName">Author Name:</label>
             <input
               type="text"
@@ -128,7 +140,7 @@ const AddAuthor = () => {
               required
             />
           </div>
-          <div className={styles.formGroup}>
+          <div className="formGroup">
             <label htmlFor="subject">Select Subject:</label>
             <select
               id="subject"
@@ -148,7 +160,7 @@ const AddAuthor = () => {
               )}
             </select>
           </div>
-          <div className={styles.formGroup}>
+          <div className="formGroup">
             <label htmlFor="book">Select Book:</label>
             <select
               id="book"
@@ -168,7 +180,7 @@ const AddAuthor = () => {
               )}
             </select>
           </div>
-          <button type="submit" className={styles.submitButton}>
+          <button type="submit" className="submitButton">
             Add Author
           </button>
         </form>

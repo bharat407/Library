@@ -1,32 +1,30 @@
+/* Light Theme Styles */
 .addBookContainer {
   max-width: 600px;
   margin: 0 auto;
+  margin-top: 3vh;
   padding: 40px 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.formGroup input,
-.formGroup select {
-  padding: 12px;
-  width: 90%;
-  font-size: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  background-color: white; /* Light background color */
+  border-radius: 12px;
+  box-shadow: 10px 12px 16px 14px rgba(0, 0, 0, 0.1); /* Lighter shadow for light theme */
+  color: #333; /* Darker text color */
 }
 
 .heading {
-  font-size: 1.8rem;
-  color: black;
+  font-size: 2rem;
+  color: #333; /* Darker text color */
   text-align: center;
-  margin-bottom: 20px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow for a softer look */
 }
 
 .addBookForm {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 25px;
 }
 
 .formGroup {
@@ -35,34 +33,99 @@
 }
 
 .formGroup label {
-  font-size: 1rem;
-  color: #555;
+  font-size: 1.1rem;
+  color: #333; /* Darker text color */
   margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.formGroup input,
+.formGroup select {
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc; /* Lighter border color */
+  border-radius: 8px;
+  background-color: #f9f9f9; /* Light background color for inputs */
+  color: #333; /* Darker text color */
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.formGroup input:focus,
+.formGroup select:focus {
+  border-color: #4caf50; /* Green for focus */
+  box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
+  outline: none;
 }
 
 .submitButton {
   padding: 12px;
-  font-size: 1rem;
-  background-color: #4caf50;
+  font-size: 1.1rem;
+  background-color: #4caf50; /* Lighter green */
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 .submitButton:hover {
   background-color: #45a049;
+  transform: translateY(-2px);
 }
 
-/* input[type="text"] {
-  background-color: white;
-  color: black;
-} */
+.formGroup {
+  position: relative; /* Ensure the custom arrow is positioned correctly */
+}
 
+.formGroup select {
+  appearance: none; /* Remove the default arrow */
+  -webkit-appearance: none; /* Remove the default arrow for Safari */
+  -moz-appearance: none; /* Remove the default arrow for Firefox */
+  padding: 12px;
+  width: 100%;
+  font-size: 1rem;
+  border: 1px solid #ccc; /* Lighter border color */
+  border-radius: 8px;
+  background-color: #f9f9f9; /* Light background color */
+  color: #333; /* Darker text color */
+  transition: border-color 0.3s, box-shadow 0.3s;
+  background-image: url("https://res.cloudinary.com/dtobxhswg/image/upload/v1725351804/black-and-white-dropdown-list-rectangle-symbol-removebg-preview_p8yo03.png");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 28px 28px;
+}
 
-input[type="email"]:focus,
-input[type="password"]:focus,
-input[type="text"]:focus {
-  border-color: none;
+.formGroup select:focus {
+  border-color: #4caf50; /* Green for focus */
+  box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
+  outline: none;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .addBookContainer {
+    padding: 20px 10px; /* Adjust padding for smaller screens */
+  }
+
+  .heading {
+    font-size: 1.5rem; 
+    font-weight: bold;/* Adjust font size for smaller screens */
+  }
+
+  .formGroup {
+    gap: 15px; /* Reduce gap between form elements */
+  }
+
+  .formGroup label {
+    font-size: 1rem; /* Adjust font size for labels on smaller screens */
+  }
+
+  .formGroup input,
+  .formGroup select {
+    font-size: 0.9rem; /* Adjust font size for inputs and selects */
+  }
+
+  .submitButton {
+    font-size: 1rem; /* Adjust font size for the submit button */
+  }
 }

@@ -76,7 +76,7 @@ const AddBook = () => {
   return (
     <div>
       <Navbar />
-      <div className={styles.addBookContainer}>
+      <div className={styles.addBookContainer }>
         <div className={styles.heading}>Add New Book</div>
         <form onSubmit={handleSubmit} className={styles.addBookForm}>
           <div className={styles.formGroup}>

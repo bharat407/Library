@@ -1,35 +1,30 @@
-/* Container for centering the cards */
 .cards-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
 }
 
-/* Grid layout for cards */
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
 }
 
-/* Individual card styles */
 .card-item {
-  background-color: #1f2937;
+  background-color: white;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   padding: 20px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Hover effect for cards */
 .card-item:hover {
   transform: translateY(-8px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
-/* Subject name style */
 .card-item h3 {
-  color: #f9fafb;
+  color: black;
   margin-top: 0;
   margin-bottom: 15px;
   border-bottom: 2px solid #6366f1;
@@ -37,75 +32,54 @@
   font-size: 1.5rem;
 }
 
-/* Grid layout for books within each subject card */
 .books-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 15px;
 }
 
-/* Individual book card styles */
 .book-card-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #374151;
+  background-color: #f5f5f5;
   border-radius: 8px;
   padding: 15px;
   text-align: center;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-/* Hover effect for book cards */
 .book-card-item:hover {
-  background-color: #4b5563;
   transform: scale(1.05);
 }
 
-/* Style for book title */
-.books-title {
+.books-titles {
   font-size: 1.3rem;
-  color: #e5e7eb;
+  color: black;
   margin: 10px 0;
 }
 
-/* Style for book image */
 .books-image {
   width: 80%;
   height: auto;
   border-radius: 10px;
-  border: 2px solid #6366f1;
-  margin-bottom: 10px;
 }
 
-/* Author section styling */
-.author-section {
-  margin-top: 10px;
-}
-
-/* Individual author card styles */
 .author-card-item {
-  background-color: #3b82f6;
   border-radius: 8px;
+  color: black;
   padding: 12px;
   margin-top: 5px;
   transition: background-color 0.3s ease;
 }
 
-/* Hover effect for author cards */
-.author-card-item:hover {
-  background-color: #2563eb;
-}
-
-/* Style for author name */
-.author-name {
+.author-names {
   margin: 0;
   font-size: 0.9rem;
-  color: #ffffff;
+  color: #1b82e9;
   font-weight: bold;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .cards-grid {
     grid-template-columns: 1fr;
@@ -116,13 +90,12 @@
   }
 }
 
-/* Loading and error states */
 .loading-error-container {
   text-align: center;
   padding: 20px;
   background-color: #1f2937;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  color: #f9fafb;
+  color: black;
   font-size: 1.2rem;
 }

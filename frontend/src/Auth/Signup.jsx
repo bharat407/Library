@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import styles from "./Registration.module.css";
+import "./Registration.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Registration = () => {
@@ -75,12 +75,12 @@ const Registration = () => {
   };
 
   return (
-    <div className={styles.section}>
-      <div className={styles.heading}>Registration Page</div>
-      <div className={styles.formContainer}>
+    <div className="registrationSection">
+      <div className="registrationHeading">Registration Page</div>
+      <div className="registrationFormContainer">
         <form onSubmit={handleSubmit}>
-          <div className={styles.formGroup}>
-            <label htmlFor="email" className={styles.formLabel}>
+          <div className="registrationFormGroup">
+            <label htmlFor="email" className="registrationFormLabel">
               Email
             </label>
             <input
@@ -89,67 +89,67 @@ const Registration = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className={styles.formInput}
+              className="registrationFormInput"
               required
             />
           </div>
-          <div className={styles.formGroup}>
-            <label htmlFor="password" className={styles.formLabel}>
+          <div className="registrationFormGroup">
+            <label htmlFor="password" className="registrationFormLabel">
               Password
             </label>
-            <div className={styles.passwordInputContainer}>
+            <div className="registrationPasswordInputContainer">
               <input
                 type={showPassword ? "text" : "password"}
                 id="password"
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                className={styles.formInput}
+                className="registrationFormInput"
                 required
               />
               <button
                 type="button"
-                className={styles.passwordToggle}
+                className="registrationPasswordToggle"
                 onClick={() => setShowPassword(!showPassword)}
               >
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </button>
             </div>
           </div>
-          <div className={styles.formGroup}>
-            <label htmlFor="confirmPassword" className={styles.formLabel}>
+          <div className="registrationFormGroup">
+            <label htmlFor="confirmPassword" className="registrationFormLabel">
               Confirm Password
             </label>
-            <div className={styles.passwordInputContainer}>
+            <div className="registrationPasswordInputContainer">
               <input
                 type={cnfPassword ? "text" : "password"}
                 id="confirmPassword"
                 name="confirmPassword"
                 value={formData.confirmPassword}
                 onChange={handleChange}
-                className={styles.formInput}
+                className="registrationFormInput"
                 required
               />
               <button
                 type="button"
-                className={styles.passwordToggle}
+                className="registrationPasswordToggle"
                 onClick={() => setCnfPassword(!cnfPassword)}
               >
                 {cnfPassword ? <FaEyeSlash /> : <FaEye />}
               </button>
             </div>
           </div>
-          <div className={styles.buttonContainer}>
+          <div className="registrationButtonContainer">
             <button
               type="submit"
-              className={`${styles.button} ${styles.buttonPrimary}`}
+              className="registrationButton registrationButtonPrimary"
             >
               Register
             </button>
             <button
               type="button"
               onClick={handleLogin}
-              className={`${styles.button} ${styles.buttonSecondary}`}
+              className="registrationButton registrationButtonSecondary"
             >
               Login
             </button>

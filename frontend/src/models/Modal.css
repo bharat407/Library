@@ -13,7 +13,7 @@
 
 /* Modal Content */
 .modal-edit {
-  background: white;
+  background: #DDE0F2;
   padding: 20px;
   border-radius: 8px;
   max-width: 400px;
@@ -23,6 +23,7 @@
 
 /* Header */
 .modal-edit h2 {
+  color: black;
   margin-bottom: 16px;
 }
 

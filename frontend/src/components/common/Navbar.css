@@ -1,21 +1,23 @@
 .navbar {
-  background-color: #111827;
-  padding: 1rem;
-  position: relative;
+  background-color: #f8f9fa;
+  padding: 1rem 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative; /* Ensure the navbar's position context is relative */
 }
 
 .navbar-container {
-  max-width: 1200px;
-  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .navbar-logo {
-  color: #ffffff;
-  font-weight: bold;
   font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
   cursor: pointer;
 }
 
@@ -25,29 +27,30 @@
 }
 
 .nav-link {
-  color: #ecf0f1;
+  color: #333;
+  font-size: 1.2rem;
   text-decoration: none;
-  margin-right: 1.5rem;
+  margin-left: 1.5rem;
   transition: color 0.3s ease;
 }
 
 .nav-link:hover {
-  color: #3498db;
+  color: #007bff;
 }
 
 .logout-button {
-  background-color: #e74c3c;
-  color: #ffffff;
+  background-color: #dc3545;
+  color: white;
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 4px;
   cursor: pointer;
-  font-weight: bold;
+  margin-left: 1.5rem;
   transition: background-color 0.3s ease;
 }
 
 .logout-button:hover {
-  background-color: #c0392b;
+  background-color: #c82333;
 }
 
 .menu-toggle {
@@ -58,41 +61,42 @@
 
 .menu-icon {
   width: 25px;
-  height: 2px;
-  background-color: #ffffff;
-  margin: 4px 0;
-  transition: 0.3s;
+  height: 3px;
+  background-color: #333;
+  margin: 2px 0;
+  transition: 0.4s;
 }
 
 @media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+
   .navbar-links {
     display: none;
     flex-direction: column;
-    width: 100%;
     position: absolute;
-    top: 60px;
+    top: 100%;
     left: 0;
-    background-color: #111827;
+    right: 0;
+    background-color: #f8f9fa;
     padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000; 
   }
 
   .navbar-links.open {
     display: flex;
   }
 
-  .navbar-links .nav-link {
-    margin: 1rem 0;
-    text-align: center;
-  }
-
-  .menu-toggle {
-    display: flex;
-  }
-
   .navbar-logo {
-    color: #ffffff;
-    font-weight: bold;
     font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
     cursor: pointer;
+  }
+  .nav-link,
+  .logout-button {
+    margin: 0.5rem 0;
   }
 }

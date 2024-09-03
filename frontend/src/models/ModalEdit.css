@@ -1,3 +1,4 @@
+/* Modal Overlay */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -8,60 +9,103 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  backdrop-filter: blur(5px); /* Adds a blur effect to the background */
 }
 
+/* Modal Content */
 .modal-content {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  max-width: 400px;
+  background: #dde0f2; /* Darker background for the modal */
+  padding: 25px;
+  border-radius: 12px;
+  max-width: 450px;
   width: 100%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  color: black; /* Light text color */
 }
 
+/* Modal Header */
 .modal-header h2 {
-  margin-bottom: 16px;
+  margin-bottom: 20px;
+  color: black;
+  font-size: 1.5rem;
+  border-bottom: 2px solid #3b82f6; /* Underline effect with accent color */
+  padding-bottom: 10px;
 }
 
+/* Input Field */
 .input-field {
   width: 100%;
-  padding: 8px;
-  margin: 8px 0;
-  border-radius: 4px;
-  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 6px;
+  border: 1px solid #64748b;
+  background: white; /* Darker input background */
+  color: black;
+  font-size: 1rem;
+  outline: none;
 }
 
+.input-field:focus {
+  border-color: #3b82f6; /* Focus effect with accent color */
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5); /* Glow effect */
+}
+
+/* Modal Body */
 .modal-body {
+  color: black;
   display: flex;
   flex-direction: column;
+  gap: 15px; /* Adds space between elements */
 }
 
+/* Dropdown */
 .dropdown {
   width: 100%;
-  padding: 8px;
-  margin: 8px 0;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-}
-
-.modal-footer {
-  display: flex;
-  justify-content: space-between;
-}
-
-.cancel-button,
-.confirm-button {
-  padding: 10px 15px;
-  border: none;
-  border-radius: 4px;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 6px;
+  border: 1px solid #64748b;
+  background: white; /* Darker dropdown background */
+  color: black;
+  font-size: 1rem;
+  outline: none;
   cursor: pointer;
 }
 
+/* Modal Footer */
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+/* Buttons */
+.cancel-button,
+.confirm-button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
 .cancel-button {
-  background-color: #f44336;
+  background-color: #ef4444; /* Red for cancel */
   color: white;
 }
 
+.cancel-button:hover {
+  background-color: #dc2626; /* Darker red on hover */
+  transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
 .confirm-button {
-  background-color: #4caf50;
+  background-color: #10b981; /* Green for confirm */
   color: white;
+}
+
+.confirm-button:hover {
+  background-color: #059669; /* Darker green on hover */
+  transform: translateY(-2px); /* Slight lift effect on hover */
 }
