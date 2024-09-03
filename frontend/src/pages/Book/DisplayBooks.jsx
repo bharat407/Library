@@ -152,7 +152,7 @@ const DisplayBooks = () => {
                       : "Unknown"}
                   </div>
                   <div className="book-authors">
-                    Authors:{" "}
+                    Author{" "}
                     {book.authors && book.authors.length > 0
                       ? book.authors.map((author) => author.name).join(", ")
                       : "Unknown"}

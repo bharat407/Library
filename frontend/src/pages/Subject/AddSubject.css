@@ -115,6 +115,7 @@
 /* Media Queries */
 @media (max-width: 768px) {
   .new-subject-container {
+    width: 85%;
     padding: 15px; /* Reduced padding for smaller screens */
     margin-top: 10vh; /* Adjust margin for smaller screens */
   }

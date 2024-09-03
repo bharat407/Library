@@ -104,12 +104,14 @@
 /* Media Queries */
 @media (max-width: 768px) {
   .addBookContainer {
+    width: 89%;
+    margin-bottom: 5vh;
     padding: 20px 10px; /* Adjust padding for smaller screens */
   }
 
   .heading {
-    font-size: 1.5rem; 
-    font-weight: bold;/* Adjust font size for smaller screens */
+    font-size: 1.5rem;
+    font-weight: bold; /* Adjust font size for smaller screens */
   }
 
   .formGroup {

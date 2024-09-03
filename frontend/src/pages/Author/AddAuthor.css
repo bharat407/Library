@@ -90,3 +90,65 @@
 .submitButton:active {
   transform: translateY(1px);
 }
+
+@media (max-width: 600px) {
+  .addAuthorContainer {
+    padding: 20px 20px;
+    margin-top: 3vh;
+    width: 83%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  .heading {
+    font-size: 1.25rem;
+    margin-bottom: 1.5vh;
+    letter-spacing: 1px;
+  }
+
+  .formGroup label {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+
+  .formGroup input,
+  .formGroup select {
+    padding: 12px;
+    font-size: 1rem;
+  }
+
+  .submitButton {
+    padding: 12px;
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .addAuthorContainer {
+    padding: 25px 25px;
+    margin-top: 4vh;
+    width: 80%;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  }
+
+  .heading {
+    font-size: 1.4rem;
+    margin-bottom: 1.75vh;
+    letter-spacing: 1.5px;
+  }
+
+  .formGroup label {
+    font-size: 1.1rem;
+    margin-bottom: 9px;
+  }
+
+  .formGroup input,
+  .formGroup select {
+    padding: 14px;
+    font-size: 1.05rem;
+  }
+
+  .submitButton {
+    padding: 14px;
+    font-size: 1.1rem;
+  }
+}

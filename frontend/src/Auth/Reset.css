@@ -20,7 +20,6 @@
   border-radius: 8px;
 }
 
-/* Form Container */
 .resetPasswordFormContainer {
   background-color: white;
   padding: 2rem;
@@ -40,7 +39,6 @@
   font-weight: 500;
 }
 
-/* Input Fields */
 .resetPasswordInput {
   width: 100%;
   margin-left: -0.8rem;
@@ -80,7 +78,6 @@
   height: 1.5rem;
 }
 
-/* Login Link */
 .resetPasswordLogin {
   display: flex;
   align-items: center;
@@ -101,7 +98,6 @@
   margin-left: 1vh;
 }
 
-/* Button Container and Styles */
 .resetPasswordButtonContainer {
   display: flex;
   justify-content: center;
@@ -126,4 +122,76 @@
 
 .resetPasswordButtonPrimary:hover {
   background-color: #2b6cb0;
+}
+
+@media (max-width: 600px) {
+  .resetPasswordContainer {
+    padding: 1rem;
+    height: auto;
+  }
+
+  .resetPasswordFormContainer {
+    width: 85%;
+    padding: 1.5rem;
+  }
+
+  .resetPasswordHeading {
+    font-size: 1.5rem;
+  }
+
+  .resetPasswordInput {
+    font-size: 0.875rem;
+    padding: 0.8rem;
+  }
+
+  .resetPasswordButton {
+    padding: 0.75rem 2rem;
+    font-size: 0.875rem;
+  }
+
+  .resetPasswordLogin {
+    font-size: 1rem;
+  }
+
+  .resetPasswordToggle {
+    font-size: 1rem;
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .resetPasswordContainer {
+    padding: 2rem;
+    height: auto;
+  }
+
+  .resetPasswordFormContainer {
+    width: 350px;
+    padding: 2rem;
+  }
+
+  .resetPasswordHeading {
+    font-size: 1.75rem;
+  }
+
+  .resetPasswordInput {
+    font-size: 1rem;
+    padding: 0.85rem;
+  }
+
+  .resetPasswordButton {
+    padding: 0.85rem 2.25rem;
+    font-size: 1rem;
+  }
+
+  .resetPasswordLogin {
+    font-size: 1.1rem;
+  }
+
+  .resetPasswordToggle {
+    font-size: 1.25rem;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
 }

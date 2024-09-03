@@ -204,8 +204,8 @@
 /* Media Queries */
 @media (max-width: 768px) {
   .subjects-header-container {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    /* align-items: flex-start; */
   }
 
   .subjects-header-buttons {
@@ -220,10 +220,7 @@
     text-align: center;
   }
 
-  .subjects-container-custom {
-    padding: 1rem;
-    margin-left: -5vh;
-  }
+ 
 
   .subjects-table-custom {
     font-size: 0.875rem;
@@ -279,7 +276,7 @@
   }
 
   .subjects-container-custom {
-    padding: 0.5rem;
+    padding: 0;
   }
 
   .subjects-table-heading,
