@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "../../components/common/Navbar";
 import { toast } from "react-hot-toast";
 import styles from "./AddBook.module.css"; // Import the module CSS
+import Spinner from "../../Error/spinner";
+import Error from "../../Error/Error";
 
 const AddBook = () => {
   const [title, setTitle] = useState("");
@@ -70,13 +72,23 @@ const AddBook = () => {
     }
   };
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
+  if (loading)
+    return (
+      <div>
+        <Spinner />
+      </div>
+    );
+  if (error)
+    return (
+      <div>
+        <Error /> {error}
+      </div>
+    );
 
   return (
     <div>
       <Navbar />
-      <div className={styles.addBookContainer }>
+      <div className={styles.addBookContainer}>
         <div className={styles.heading}>Add New Book</div>
         <form onSubmit={handleSubmit} className={styles.addBookForm}>
           <div className={styles.formGroup}>
